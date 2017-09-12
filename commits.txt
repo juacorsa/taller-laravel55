@@ -1,0 +1,9 @@
+
+Commit1 - 11.09.2017
+
+- Se instala Laravel 5.5
+- Se eliminan las migraciones de los usuarios que vienen por defecto
+- Se crea el modelo de la aplicación que consiste en Tecnicos, Clientes, Productos y Entradas
+- Se crean las migraciones correspondientes, pero antes cambiamos el engine de MySQL a InnoDB 
+para que soporte claves ajenas
+- Se crea la base de datos Taller con sus correspondientes tablas
