@@ -1,5 +1,16 @@
 
-Commit1 - 11.09.2017
+
+Commit1 - 18.09.2017 ------------------------------------------------------------------------------
+
+ - Se inicia la implementación del patrón repositorio
+ - Se crea la interfaz ProductoRepositoryInterface
+ - Se crea el repositorio de productos implementando la interfaz mencionada anteriormente
+ - Se crea la funcionalidad de registros de productos
+ - Se crea la validación de productos usando los objetos Request
+ - Se crean los controladores de clientes, productos y técnicos
+
+
+Commit1 - 11.09.2017 ------------------------------------------------------------------------------
 
 - Se instala Laravel 5.5
 - Se eliminan las migraciones de los usuarios que vienen por defecto
