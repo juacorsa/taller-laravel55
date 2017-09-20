@@ -21,11 +21,9 @@ class ProductoRequest extends FormRequest
     public function messages()
     {
         return [
-            'nombre.required' => 'El nombre producto es un dato obligatorio.',
-            'nombre.max'      => 'El producto debe tener como máximo 80 caracteres.',
+            'nombre.required' => 'El nombre del producto es un dato obligatorio.',
+            'nombre.max'      => 'El nombre del producto debe tener como máximo 80 caracteres.',
             'nombre.unique'   => 'El producto indicado ya existe en la base de datos'
         ];
     }
-
-
 }

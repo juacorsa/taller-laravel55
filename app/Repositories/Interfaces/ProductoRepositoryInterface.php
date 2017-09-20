@@ -10,7 +10,7 @@ interface ProductoRepositoryInterface
 
 	public function registrar(array $data);
 
-	public function actualizar($id, array $data);
+	public function actualizar(array $data);
 	
 	public function obtener($id);
 }

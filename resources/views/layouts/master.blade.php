@@ -9,6 +9,9 @@
     <link href="{{ asset('/css/taller.css') }}" rel="stylesheet"> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
+    
+    
+
     <style type="text/css">
         .btn {
             border-radius: 0;   
@@ -28,11 +31,31 @@
             font-size: 13px;
         }
 
-        label {
-            font-family: Raleway;
+        label {            
             font-size: 14px;
             font-weight: normal;
         }
+
+        .editar {
+            width: 50px;
+        }
+
+        thead { 
+          background-color: #f5f5f5; 
+          border-bottom: 4px solid #bdbdbd;   
+        }
+
+        table {
+            background-color: white;
+        }
+
+        .item:hover {
+            background-color: #f5f5f5;
+        }
+
+
+
+
 
     </style>
 
@@ -79,6 +102,7 @@
     </div>
 
     @section('scripts')
+        
     @show
 </body>
 </html>

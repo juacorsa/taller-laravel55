@@ -19,8 +19,9 @@ class ProductosController extends Controller
 
     public function index()
     {
-    	$productos = $this->producto->obtenerTodos(); 
-        return view('productos.index', compact('$productos'));
+    	$productos = $this->producto->obtenerTodos();
+
+        return view('productos.index', compact('productos'));
     }
 
     public function create()
@@ -34,6 +35,21 @@ class ProductosController extends Controller
         $this->producto->registrar($data); 
 
         return redirect()->route('productos.index');
+    }
+
+    public function edit($id)
+    {      
+        $producto = $this->producto->obtener($id);
+
+        return view('productos.edit', compact('producto'));
+    }
+
+    public function update(ProductoRequest $request)
+    {
+        $data = $request->only(['nombre', 'id']);               
+        $this->producto->actualizar($data);  
+        
+        return redirect()->route('productos.index');              
     }
 
 }

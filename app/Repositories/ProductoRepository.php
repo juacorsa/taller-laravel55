@@ -18,7 +18,7 @@ class ProductoRepository implements ProductoRepositoryInterface
 
 	public function obtenerTodos()
 	{
-		return $this->modelo->orderBy('nombre','asc');
+		return $this->modelo->orderBy('nombre','asc')->get();
 	}
 
 	public function registrar(array $data)
@@ -26,15 +26,14 @@ class ProductoRepository implements ProductoRepositoryInterface
         return $this->modelo->create($data);
 	}
 
-	public function actualizar($id, array $data)
-	{
-		return $this->model->find($id)->update($data);
+	public function actualizar(array $data)
+	{		
+		return $this->modelo->find($data['id'])->update($data);
 	}
 
 	public function obtener($id)
 	{
 		return $this->modelo->find($id);
 	}
-
 	
 }

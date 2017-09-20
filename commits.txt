@@ -1,6 +1,14 @@
 
 
-Commit1 - 18.09.2017 ------------------------------------------------------------------------------
+Commit3 - 20.09.2017 ------------------------------------------------------------------------------
+
+ - Se crea el request TecnicoRequest
+ - Se crea el request ClienteRequest
+ - Se termina la sección de los productos
+
+
+
+Commit2 - 18.09.2017 ------------------------------------------------------------------------------
 
  - Se inicia la implementación del patrón repositorio
  - Se crea la interfaz ProductoRepositoryInterface
