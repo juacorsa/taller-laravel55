@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
 @section('contenido')
-	
-	<h2><i class="fa fa-desktop" aria-hidden="true"></i> Actualizar producto</h2>	
-	<p>A continuación podrás actualizar el producto seleccionado. Recuerda que no está permitido duplicar productos.</p>
+
+	<h2><i class="fa fa-users" aria-hidden="true"></i> Actualizar cliente</h2>	
+	<p>A continuación podrás actualizar el cliente seleccionado. Recuerda que no está permitido duplicar clientes.</p>
 	<hr/>
 	<div class="col-sm-6">
-		{!! Form::model($producto, ['class' => 'form-horizontal', 'route' => 'producto.update', 'method' => 'PUT']) !!}
+		{!! Form::model($cliente, ['class' => 'form-horizontal', 'route' => 'cliente.update', 'method' => 'PUT']) !!}
 
-			@include('productos.partials.fields')		
+			@include('clientes.partials.fields')		
 
 			<div class="form-group">
 	        	<div class="col-sm-offset-2 col-sm-8">				

@@ -2,13 +2,13 @@
 
 @section('contenido')
 	
-	<h2><i class="fa fa-desktop" aria-hidden="true"></i> Actualizar producto</h2>	
-	<p>A continuación podrás actualizar el producto seleccionado. Recuerda que no está permitido duplicar productos.</p>
+	<h2><i class="fa fa-user" aria-hidden="true"></i> Actualizar técnico</h2>	
+	<p>A continuación podrás actualizar el técnico seleccionado. Recuerda que no está permitido duplicar técnicos.</p>
 	<hr/>
 	<div class="col-sm-6">
-		{!! Form::model($producto, ['class' => 'form-horizontal', 'route' => 'producto.update', 'method' => 'PUT']) !!}
+		{!! Form::model($tecnico, ['class' => 'form-horizontal', 'route' => 'tecnico.update', 'method' => 'PUT']) !!}
 
-			@include('productos.partials.fields')		
+			@include('tecnicos.partials.fields')		
 
 			<div class="form-group">
 	        	<div class="col-sm-offset-2 col-sm-8">				

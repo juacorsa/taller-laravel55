@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('contenido')
-
-	<h2>Gestión de productos</h2>
+	
+	<h2><i class="fa fa-desktop" aria-hidden="true"></i> Gestión de productos</h2>
 	<p>
 	    A continuación se muestran todos los productos registrados en la aplicación, ordenados alfabéticamente.
 		<span class="pull-right"> <a href="{{ route('producto.create') }}" class="btn btn-primary">
@@ -43,9 +43,18 @@
 	</div>
 
 	@section('scripts')
-	@parent
-    	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	@parent    	
     	<script src="{{ asset('js/filtrar.js') }}"></script>  
+
+		@if(Session::has('flash_mensaje'))	
+			<script type="text/javascript">
+				toastr.{{ Session::get('flash_tipo') }}		
+				('{{ Session::get('flash_mensaje') }}', '{{ Session::get('flash_titulo') }}')
+			</script>
+			@php
+		    	\Session::flush()		
+			@endphp    
+		@endif
     @stop
 
 @endsection

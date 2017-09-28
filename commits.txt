@@ -1,12 +1,23 @@
 
+Commit4 - .09.2017 ------------------------------------------------------------------------------
+
+- Se crea app.css con unos estilos propios
+- Se añade la fuente Raleway
+- Se crean las interfaces ClienteRepositoryInterface.php y TecnicoRepositoryInterface.php
+- Se crean los repositorios ClienteRepository.php y TecnicoRepository.php
+- Se crea la vista index.blade.php de la sección de los técnicos
+- Se crea la vista index.blade.php de la sección de los clientes
+- Se finaliza el mantenimiento de técnicos
+- Se finaliza el mantenimiento de clientes
+- Se añaden iconos font-awesome a las vistas de productos, clientes y productos
+- Se añade mensaje de éxito y fracaso al registrar nuevos productos, clientes y técnicos
+
 
 Commit3 - 20.09.2017 ------------------------------------------------------------------------------
 
  - Se crea el request TecnicoRequest
  - Se crea el request ClienteRequest
  - Se termina la sección de los productos
-
-
 
 Commit2 - 18.09.2017 ------------------------------------------------------------------------------
 
@@ -16,7 +27,6 @@ Commit2 - 18.09.2017 -----------------------------------------------------------
  - Se crea la funcionalidad de registros de productos
  - Se crea la validación de productos usando los objetos Request
  - Se crean los controladores de clientes, productos y técnicos
-
 
 Commit1 - 11.09.2017 ------------------------------------------------------------------------------
 
