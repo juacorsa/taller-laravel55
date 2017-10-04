@@ -31,5 +31,9 @@ class AppServiceProvider extends ServiceProvider
 
          $this->app->bind('App\Repositories\Interfaces\ClienteRepositoryInterface', 
             'App\Repositories\ClienteRepository');
+
+         $this->app->bind('App\Repositories\Interfaces\EntradaRepositoryInterface', 
+            'App\Repositories\EntradaRepository');
+
     }
 }

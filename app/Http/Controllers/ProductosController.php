@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Repositories\Interfaces\ProductoRepositoryInterface;
 use App\Http\Requests\ProductoRequest;
 use App\Model\Producto;
@@ -34,19 +33,20 @@ class ProductosController extends Controller
     {    
         $data = $request->only(['nombre']);        
         try 
-        {
-            //throw new Exception('División por cero.');
-            $this->producto->registrar($data);             
-            Session::flash('flash_mensaje', 'Producto registrado con éxito');
-            Session::flash('flash_titulo', 'Enhorabuena!!');
-            Session::flash('flash_tipo', 'success');           
+        {            
+            $this->producto->registrar($data);   
+            Session::flash('flash_toastr', '');          
+            Session::flash('flash_mensaje', PRODUCTO_REGISTRADO);
+            Session::flash('flash_titulo', ENHORABUENA);
+            Session::flash('flash_tipo', FLASH_SUCCESS);           
             return redirect()->route('productos.index');
         }
         catch(Exception $e)
         {
-            Session::flash('flash_mensaje', 'Ha sido imposible registrar un nuevo producto');
-            Session::flash('flash_titulo', 'Error!!');
-            Session::flash('flash_tipo', 'error');           
+            Session::flash('flash_swal', '');
+            Session::flash('flash_mensaje', PRODUCTO_NO_REGISTRADO);
+            Session::flash('flash_titulo', ERROR);
+            Session::flash('flash_tipo', FLASH_ERROR);           
             return back();
         }      
     }
@@ -54,14 +54,39 @@ class ProductosController extends Controller
     public function edit($id)
     {      
         $producto = $this->producto->obtener($id);
+
+        if (!$producto) 
+        {
+            Session::flash('flash_swal', '');
+            Session::flash('flash_mensaje', PRODUCTO_NO_ENCONTRADO);
+            Session::flash('flash_titulo', ERROR);
+            Session::flash('flash_tipo', FLASH_ERROR);           
+            return back();            
+        }
+
         return view('productos.edit', compact('producto'));
     }
 
     public function update(ProductoRequest $request)
     {
-        $data = $request->only(['nombre', 'id']);               
-        $this->producto->actualizar($data);
-        return redirect()->route('productos.index');              
-    }
+        $data = $request->only(['nombre', 'id']);                       
 
+        try
+        {
+            $this->producto->actualizar($data);
+            Session::flash('flash_toastr', '');          
+            Session::flash('flash_mensaje', PRODUCTO_ACTUALIZADO);
+            Session::flash('flash_titulo', ENHORABUENA);
+            Session::flash('flash_tipo', FLASH_SUCCESS);                       
+            return redirect()->route('productos.index'); 
+        }
+        catch(Exception $e)
+        {
+            Session::flash('flash_swal', 'swal');
+            Session::flash('flash_mensaje', PRODUCTO_NO_ACTUALIZADO);
+            Session::flash('flash_titulo', ERROR);
+            Session::flash('flash_tipo', FLASH_ERROR);           
+            return back();
+        }                     
+    }
 }

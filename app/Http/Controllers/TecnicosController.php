@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\TecnicoRequest;
 use App\Repositories\Interfaces\TecnicoRepositoryInterface;
 use App\Model\Tecnico;
+use Session;
+use Exception;
 
 class TecnicosController extends Controller
 {
@@ -29,21 +31,61 @@ class TecnicosController extends Controller
 
 	public function store(TecnicoRequest $request)
     {    
-        $data = $request->only(['nombre']);        
-        $this->tecnico->registrar($data); 
-        return redirect()->route('tecnicos.index');
+        $data = $request->only(['nombre']);                
+        try 
+        {            
+            $this->tecnico->registrar($data); 
+            Session::flash('flash_toastr', '');          
+            Session::flash('flash_mensaje', TECNICO_REGISTRADO);
+            Session::flash('flash_titulo', ENHORABUENA);
+            Session::flash('flash_tipo', FLASH_SUCCESS);           
+            return redirect()->route('tecnicos.index');
+        }
+        catch(Exception $e)
+        {
+            Session::flash('flash_swal', '');
+            Session::flash('flash_mensaje', TECNICO_NO_REGISTRADO);
+            Session::flash('flash_titulo', ERROR);
+            Session::flash('flash_tipo', FLASH_ERROR);           
+            return back();
+        }           
     }  
 
     public function edit($id)  
     {
         $tecnico = $this->tecnico->obtener($id);
+        
+        if (!$tecnico) 
+        {
+            Session::flash('flash_swal', '');
+            Session::flash('flash_mensaje', TECNICO_NO_ENCONTRADO);
+            Session::flash('flash_titulo', ERROR);
+            Session::flash('flash_tipo', FLASH_ERROR);           
+            return back();            
+        }
+
         return view('tecnicos.edit', compact('tecnico'));
     }
 
     public function update(TecnicoRequest $request)
     {
-        $data = $request->only(['nombre', 'id']);               
-        $this->tecnico->actualizar($data);
-        return redirect()->route('tecnicos.index');                      
+        $data = $request->only(['nombre', 'id']);                       
+        try
+        {
+            $this->tecnico->actualizar($data);
+            Session::flash('flash_toastr', '');          
+            Session::flash('flash_mensaje', TECNICO_ACTUALIZADO);
+            Session::flash('flash_titulo', ENHORABUENA);
+            Session::flash('flash_tipo', FLASH_SUCCESS);                       
+            return redirect()->route('tecnicos.index');  
+        }
+        catch(Exception $e)
+        {
+            Session::flash('flash_swal', 'swal');
+            Session::flash('flash_mensaje', TECNICO_NO_ACTUALIZADO);
+            Session::flash('flash_titulo', ERROR);
+            Session::flash('flash_tipo', FLASH_ERROR);           
+            return back();
+        }                                                   
     }
 }

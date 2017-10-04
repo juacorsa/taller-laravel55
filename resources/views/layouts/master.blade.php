@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.1/sweetalert2.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
 </head>
 <body>
     <nav class="navbar navbar-default">
@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">                    
                     <li>
-                        <a href="{{ url('pedidos_entregados') }}"><i class="fa fa-bell"></i> Entradas Pendientes</a>
+                        <a href="{{ route('entradas-pendientes.index') }}"><i class="fa fa-bell"></i> Entradas Pendientes</a>
                     </li>
                     <li>
                         <a href="{{ url('pedidos_preparados') }}"><i class="fa fa-thumbs-up"></i> Entradas Preparadas</a>
@@ -45,7 +45,13 @@
                     <li>
                         <a href="{{ route('tecnicos.index') }}"><i class="fa fa-user"></i> Técnicos</a>
                     </li>
-                </ul>                                
+                </ul> 
+
+                <ul class="nav navbar-nav pull-right">   
+                    <li>    
+                    <a href="{{ route('tecnicos.index') }}"><i class="fa fa-user"></i> Nueva entrada</a>
+                    </li>                                               
+                </ul>
             </div>
         </div>
     </nav>
@@ -58,6 +64,13 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>  
         <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.1/sweetalert2.min.js"></script> 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>  
+        <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+        <script src="{{ asset('/js/datatable-config.js') }}"></script>
     @show
 </body>
 </html>
+
+
+
+
