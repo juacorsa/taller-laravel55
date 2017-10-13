@@ -15,11 +15,11 @@ class CreateEntradasTable extends Migration
     {
         Schema::create('entradas', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('fecha_entrada');
-            $table->date('fecha_reparacion');
-            $table->date('fecha_entrega');
+            $table->date('fecha_entrada');            
+            $table->date('fecha_reparacion')->nullable();
+            $table->date('fecha_entrega')->nullable();
             $table->string('usuario', 80)->nullable();
-            $table->text('averia')->nullable();
+            $table->text('averia');
             $table->text('solucion')->nullable();
             $table->text('comentario')->nullable();
             $table->string('accesorios', 255)->nullable();

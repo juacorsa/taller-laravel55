@@ -27,9 +27,6 @@ label {
  	font-size: 14px;
     font-weight: normal;
 }
-.editar {
- 	width: 15px;
-}
 thead { 
 	background-color: #f5f5f5; 
     border-bottom: 4px solid #bdbdbd;   
@@ -37,9 +34,12 @@ thead {
 table {
 	background-color: white;
 }
-.item:hover {
- 	background-color: #f5f5f5;
- }
+tr:nth-child(odd) { 
+	background: #F5F5F5; 
+}
+tr:nth-child(even) { 
+	background: #FFF 
+}
 .navbar-default {
     background-color: #F8F8F8;
     border-color: #E7E7E7;
@@ -54,3 +54,4 @@ table {
 }
 .no-sort::after { display: none!important; }
 .no-sort { pointer-events: none!important; cursor: default!important; }
+

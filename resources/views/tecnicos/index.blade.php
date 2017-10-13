@@ -9,6 +9,7 @@
 	    	<i class="fa fa-plus"></i> Registrar un nuevo técnico</a></span>
 	</p>
 	<br>
+	@tecnicos($tecnicos)
 	<div class="row">
 		<div class="col-md-6">	
 			<table id="tabla" class="table table-bordered">
@@ -20,8 +21,8 @@
 				</thead>
 				<tbody id="tbody">
 					@foreach ($tecnicos as $tecnico)
-						<tr class="item">
-							<td class="editar">
+						<tr>
+							<td>
 								<a class="btn btn-primary" href="{{ route('tecnico.edit', $tecnico) }}">
 									<i class="fa fa-bars"></i>									
 								</a>						
@@ -35,6 +36,9 @@
 			</table>
 		</div>
 	</div>
+	@else
+		Oops!!. No hay técnicos registrados.
+	@endtecnicos
 
 	@section('scripts')
 	@parent    	
@@ -42,7 +46,10 @@
 		  	$('#tabla').DataTable({	
 		  		"pagingType": "simple",
 		  		"stateSave": true,	  		
-				"language" : { "url": "{{ asset('/json/spanish.json')}}" }			 
+				"language" : { "url": "{{ asset('/json/spanish.json')}}" },
+				"columnDefs": [
+				    { "width": "10px",  "targets": 0 }		
+				]		 
 		  	});		  
 		 </script>    	
     	

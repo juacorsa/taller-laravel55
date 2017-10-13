@@ -1,21 +1,21 @@
-	@extends('layouts.master')
+@extends('layouts.master')
 
 @section('contenido')
 	
-	<h2><i class="fa fa-desktop" aria-hidden="true"></i> Registrar de producto</h2>	
-	<p>
-	    A continuación podrás registrar un nuevo producto. Recuerda que no está permitido duplicar productos.	    
-	</p>
+	<h2><i class="fa fa-bell" aria-hidden="true"></i> Actualizar entrada</h2>	
+	<p>A continuación podrás actualizar la entrada seleccionada.</p>
 	<hr/>
 	<div class="col-sm-6">
-		{!! Form::open(['class' => 'form-horizontal', 'route' => 'producto.store', 'method' => 'POST']) !!}
+		{!! Form::model($entrada, ['class' => 'form-horizontal', 'route' => 'entrada.update', 'method' => 'PUT']) !!}
 
-			@include('productos.partials.fields')		
+			@include('entradas-pendientes.partials.fields')		
 
 			<div class="form-group">
 	        	<div class="col-sm-offset-2 col-sm-8">				
 					<button class="btn btn-primary" type="submit">
-						<i class="fa fa-plus"></i> Registrar producto</button>				
+						<i class="fa fa-check"></i> Guardar cambios</button>	
+					<a class="btn btn-danger" href="javascript:history.back()">
+						<i class="fa fa-close"></i> Cancelar</a>			
 	            </div>
         	</div>
 
@@ -24,7 +24,7 @@
 
 	@section('scripts')
 	@parent    	
-		@if(Session::has('flash_mensaje'))	
+		@if(Session::has('flash_swal'))	
 			<script type="text/javascript">
 				$(function() {			
 				    swal({
@@ -33,11 +33,8 @@
 				        text: "{{ Session::get('flash_mensaje') }}"
 				    });
 				});		
-			</script>				
-			@php
-		    	\Session::flush()		
-			@endphp    
-		@endif		
+			</script>
+		@endif
     @stop
-
+    
 @endsection

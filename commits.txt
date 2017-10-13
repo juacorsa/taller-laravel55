@@ -1,5 +1,15 @@
 
-Commit5 - 04.10.2017 ------------------------------------------------------------------------------
+Commit6
+
+- Se crean las directivas @productos, @clientes y @tecnicos
+- Se crean las directivas @hoy, @ayer y @hacevariosdias
+- Se termina la actualización de entradas pendientes
+- Se incluye una columna adicional en la tabla de entradas pendientes llamada "En taller" que refleja
+los días transcurridos desde su registro en el ssitema
+- Se completa el borrado de entradas pendientes
+- Se completa el registro de soluciones de las entradas
+
+Commit5
 
 - Las inserciones y actualizaciones de cliente, productos y tecnicos se proteger con try catch
 - Se integra el plugin datatables para mostrar los registros de clientes, productos y técnicos
@@ -7,7 +17,7 @@ Commit5 - 04.10.2017 -----------------------------------------------------------
 de registros y/o actualizaciones de clientes, técnicos y productos
 
 
-Commit4 - .09.2017 ------------------------------------------------------------------------------
+Commit4
 
 - Se crea app.css con unos estilos propios
 - Se añade la fuente Raleway
@@ -21,13 +31,13 @@ Commit4 - .09.2017 -------------------------------------------------------------
 - Se añade mensaje de éxito y fracaso al registrar nuevos productos, clientes y técnicos
 
 
-Commit3 - 20.09.2017 ------------------------------------------------------------------------------
+Commit3
 
  - Se crea el request TecnicoRequest
  - Se crea el request ClienteRequest
  - Se termina la sección de los productos
 
-Commit2 - 18.09.2017 ------------------------------------------------------------------------------
+Commit2
 
  - Se inicia la implementación del patrón repositorio
  - Se crea la interfaz ProductoRepositoryInterface
@@ -36,7 +46,7 @@ Commit2 - 18.09.2017 -----------------------------------------------------------
  - Se crea la validación de productos usando los objetos Request
  - Se crean los controladores de clientes, productos y técnicos
 
-Commit1 - 11.09.2017 ------------------------------------------------------------------------------
+Commit1
 
 - Se instala Laravel 5.5
 - Se eliminan las migraciones de los usuarios que vienen por defecto

@@ -19,6 +19,10 @@ define('TECNICO_NO_REGISTRADO', 'Ha sido imposible registrar un nuevo técnico')
 define('TECNICO_NO_ENCONTRADO', 'Ha sido imposible encontrar el técnico seleccionado');
 define('TECNICO_NO_ACTUALIZADO', 'Ha sido imposible actualizar el técnico seleccionado');
 define('TECNICO_ACTUALIZADO', 'Técnico actualizado correctamente');
+define('ENTRADA_REGISTRADA', 'Entrada registrada con éxito');
+define('ENTRADA_NO_REGISTRADA', 'Ha sido imposible registrar una nueva entrada');
+define('ENTRADA_ACTUALIZADA', 'Entrada actualizada con éxito');
+define('ENTRADA_NO_ACTUALIZADA', 'Ha sido imposible actualizar la entrada seleccionada');
 define('PENDIENTE', 'P');
 define('ENTREGADA', 'E');
 define('REPARADA', 'R');
@@ -51,5 +55,12 @@ Route::post('/cliente', 'ClientesController@store')->name('cliente.store');
 Route::get('/cliente/{id}', 'ClientesController@edit')->name('cliente.edit');
 Route::put('/cliente', 'ClientesController@update')->name('cliente.update');
 
-// Rutas de entradas pendientes
+// Rutas de entradas
 Route::get('/entradas-pendientes', 'EntradasPendientesController@index')->name('entradas-pendientes.index');
+Route::get('/entrada', 'EntradasPendientesController@create')->name('entrada.create');
+Route::post('/entrada', 'EntradasPendientesController@store')->name('entrada.store');
+Route::get('/entrada/{id}', 'EntradasPendientesController@edit')->name('entrada.edit');
+Route::put('/entrada', 'EntradasPendientesController@update')->name('entrada.update');
+Route::get('/entrada/{id}/reparada', 'EntradasReparadasController@create')->name('entrada-reparada.create');
+Route::post('/entrada-reparada', 'EntradasReparadasController@store')->name('entrada-reparada.store');
+Route::post('/delete', 'EntradasPendientesController@destroy')->name('entrada.destroy');

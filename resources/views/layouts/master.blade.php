@@ -49,7 +49,7 @@
 
                 <ul class="nav navbar-nav pull-right">   
                     <li>    
-                    <a href="{{ route('tecnicos.index') }}"><i class="fa fa-user"></i> Nueva entrada</a>
+                    <a href="{{ route('entrada.create') }}"><i class="fa fa-user"></i> Nueva entrada</a>
                     </li>                                               
                 </ul>
             </div>
@@ -62,11 +62,13 @@
 
     @section('scripts')  
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>  
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.1/sweetalert2.min.js"></script> 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>  
         <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
         <script src="{{ asset('/js/datatable-config.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
     @show
 </body>
 </html>

@@ -14,8 +14,8 @@
 
 <div class="form-group">   		
 	<label class="col-sm-2 control-label">Cliente</label>
-	    <div class="col-sm-8">
-			{!! Form::text('nombre', null, ['class' => 'form-control', 'autocomplete' => 'off', 'autofocus']) !!}  	
-		</div>	
+	<div class="col-sm-8">
+		{!! Form::text('nombre', null, ['class' => 'form-control', 'autocomplete' => 'off', 'autofocus']) !!}  	
+	</div>	
 </div>
 
