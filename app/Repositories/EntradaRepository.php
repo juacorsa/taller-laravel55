@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Repositories\Interfaces\EntradaRepositoryInterface;
 use App\Model\Entrada;
+use Carbon\Carbon;
 
 class EntradaRepository implements EntradaRepositoryInterface
 {
@@ -16,6 +17,16 @@ class EntradaRepository implements EntradaRepositoryInterface
 		$this->modelo = $modelo;
 	}
 
+	private function obtenerEntradas($estado)
+	{
+		return $this->modelo::with('cliente')
+			->with('producto')
+			->with('tecnico')
+			->where('estado', $estado)
+			->orderBy('fecha_entrada','desc')
+			->get();		
+	}
+
 	public function obtenerEntradasPendientes()
 	{
 		return $this->modelo::with('cliente')
@@ -23,8 +34,23 @@ class EntradaRepository implements EntradaRepositoryInterface
 			->with('tecnico')
 			->where('estado', PENDIENTE)
 			->orderBy('fecha_entrada','desc')
-			->get();
+			->get();				
 	}
+
+	public function obtenerEntradasEntregadas($año)
+	{
+		
+	}
+
+	public function obtenerEntradasReparadas()
+	{
+		return $this->modelo::with('cliente')
+			->with('producto')
+			->with('tecnico')
+			->where('estado', REPARADA)
+			->orderBy('fecha_reparacion','desc')
+			->get();						
+	}	
 
 	public function registrar(array $data)
 	{		
@@ -50,6 +76,27 @@ class EntradaRepository implements EntradaRepositoryInterface
 		$data['fecha_reparacion'] = now(); 
 		return $this->modelo->find($data['id'])->update($data);		
 	}
+
+	public function entregar($id, $desde)
+	{
+		$data['estado']	= ENTREGADA;
+
+		switch ($desde) {
+			case 0:
+				$data['fecha_entrega'] = now(); 				
+				break;
+
+			case 1:
+				$data['fecha_entrega'] = Carbon::yesterday();				
+				break;
+		
+			default:
+				$data['fecha_entrega'] = Carbon::now()->subDay($desde);
+				break;
+		}
+		
+		return $this->modelo->find($id)->update($data);		
+	}	
 
 	public function borrar($id)
 	{

@@ -21,5 +21,16 @@
 
 		{!! Form:: close() !!}
 	</div>
+@section('scripts')
+	@parent
+	<script type="text/javascript">
+			$(document).keydown(function(e) {				
+				if (e.keyCode == 27) { 
+				   window.history.back();
+				   return false;
+				}
+			});    				
+		</script>
+    @stop
 
 @endsection

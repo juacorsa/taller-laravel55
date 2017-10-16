@@ -2,13 +2,13 @@
 
 @section('contenido')
 	
-	<h2><i class="fa fa-bell" aria-hidden="true"></i> Actualizar entrada</h2>	
+	<h2><i class="fa fa-thumbs-up" aria-hidden="true"></i> Actualizar entrada</h2>	
 	<p>A continuación podrás actualizar la entrada seleccionada.</p>
 	<hr/>
 	<div class="col-sm-6">
-		{!! Form::model($entrada, ['class' => 'form-horizontal', 'route' => 'entrada.update', 'method' => 'PUT']) !!}
+		{!! Form::model($entrada, ['class' => 'form-horizontal', 'route' => 'entrada-reparada.update', 'method' => 'PUT']) !!}
 
-			@include('entradas-pendientes.partials.fields')		
+			@include('entradas-reparadas.partials.fields')		
 
 			<div class="form-group">
 	        	<div class="col-sm-offset-2 col-sm-8">				
@@ -35,6 +35,7 @@
 				});		
 			</script>
 		@endif
+
 		<script type="text/javascript">
 			$(document).keydown(function(e) {				
 				if (e.keyCode == 27) { 
@@ -42,7 +43,7 @@
 				   return false;
 				}
 			});    				
-		</script>		
+		</script>
     @stop
     
 @endsection

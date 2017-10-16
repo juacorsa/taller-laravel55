@@ -23,14 +23,16 @@ define('ENTRADA_REGISTRADA', 'Entrada registrada con éxito');
 define('ENTRADA_NO_REGISTRADA', 'Ha sido imposible registrar una nueva entrada');
 define('ENTRADA_ACTUALIZADA', 'Entrada actualizada con éxito');
 define('ENTRADA_NO_ACTUALIZADA', 'Ha sido imposible actualizar la entrada seleccionada');
+define('ENTRADA_BORRADA', 'Entrada eliminada con éxito');
+define('ENTRADA_NO_BORRADA', 'Ha sido imposible eliminar la entrada seleccionada');
+define('ENTRADA_ENTREGADA', 'Entrada entregada con éxito');
+define('ENTRADA_NO_ENTREGADA', 'Ha sido imposible marcar la entrada seleccionada como entregada');
 define('PENDIENTE', 'P');
 define('ENTREGADA', 'E');
 define('REPARADA', 'R');
 
-
-
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('entradas-pendientes');
 });
 
 // Rutas de productos
@@ -63,4 +65,9 @@ Route::get('/entrada/{id}', 'EntradasPendientesController@edit')->name('entrada.
 Route::put('/entrada', 'EntradasPendientesController@update')->name('entrada.update');
 Route::get('/entrada/{id}/reparada', 'EntradasReparadasController@create')->name('entrada-reparada.create');
 Route::post('/entrada-reparada', 'EntradasReparadasController@store')->name('entrada-reparada.store');
-Route::post('/delete', 'EntradasPendientesController@destroy')->name('entrada.destroy');
+Route::post('/borrar-entrada', 'EntradasPendientesController@destroy');
+Route::get('/entradas-reparadas', 'EntradasReparadasController@index')->name('entradas-reparadas.index');
+Route::post('/entrada-entregada', 'EntradasReparadasController@entregada');
+Route::get('/entrada-reparada/{id}', 'EntradasReparadasController@edit')->name('entrada-reparada.edit');
+
+Route::put('/entrada-reparada', 'EntradasReparadasController@update')->name('entrada-reparada.update');

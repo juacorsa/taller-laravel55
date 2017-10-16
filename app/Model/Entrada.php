@@ -10,7 +10,7 @@ class Entrada extends Model
     public $timestamps  = true;
     protected $fillable = ['cliente_id', 'producto_id', 'tecnico_id', 'usuario', 'averia', 
     	'solucion', 'modelo', 'accesorios', 'fecha_entrada', 'comentario', 'horas', 'solucion', 
-        'estado', 'fecha_reparacion'];
+        'estado', 'fecha_reparacion', 'fecha_entrega'];
 
     public function cliente()
     {

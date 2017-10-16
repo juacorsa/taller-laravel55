@@ -2,8 +2,8 @@
 
 @section('contenido')
 
-	<h2><i class="fa fa-bell" aria-hidden="true"></i> Entradas pendientes</h2>
-	<p>A continuación se muestran todas las entradas pendientes de reparar, ordenadas por fecha de entrada.</p>
+	<h2><i class="fa fa-thumbs-up" aria-hidden="true"></i> Entradas reparadas</h2>
+	<p>A continuación se muestran todas las entradas reparadas, ordenadas por fecha de reparación.</p>
 
 	@entradas($entradas)
 	{{ csrf_field() }}
@@ -13,16 +13,16 @@
 			<table id="tabla" class="table table-bordered">
 				<thead>
 					<tr>
-						<td class="no-sort">Editar</td>
-						<td class="fecha">Fecha Entrada</td>
-						<td>En taller</td>
+						<td class="no-sort">Editar</td>						
+						<td>Reparada</td>
 						<td>Cliente</td>
 						<td>Usuario</td>
-						<td>Producto</td>
-						<td>Modelo</td>
+						<td>Producto</td>						
 						<td>Técnico</td>
 						<td class="no-sort">Avería</td>
 						<td class="no-sort">Comentario</td>
+						<td class="no-sort">Solución</td>
+						<td class="no-sort text-center">Horas</td>
 						<td class="no-sort text-center">Acciones</td>
 					</tr>
 				</thead>
@@ -30,23 +30,20 @@
 					@foreach ($entradas as $entrada)
 						<tr class="entrada{{$entrada->id}}">
 							<td class="text-center">
-								<a class="btn btn-primary" href="{{ route('entrada.edit', $entrada) }}">
+								<a class="btn btn-primary" href="{{ route('entrada-reparada.edit', $entrada) }}">
 									<i class="fa fa-bars"></i>									
 								</a>						
 							</td>	
 							<td class="text-center">
-								{{ Carbon\Carbon::parse($entrada->fecha_entrada)->format('d-m-Y') }}
-							</td>
-							<td class="text-center">
-								@hoy($entrada->fecha_entrada)
+								@hoy($entrada->fecha_reparacion)
 									<span class="label label-success">Hoy</span>
 								@endhoy
 
-								@ayer($entrada->fecha_entrada)
+								@ayer($entrada->fecha_reparacion)
 									<span class="label label-warning">Ayer</span>								
 								@endayer	
 
-								@hacevariosdias($entrada->fecha_entrada)
+								@hacevariosdias($entrada->fecha_reparacion)
 									<?php
 										Carbon\Carbon::setLocale('es');
 										$fecha = Carbon\Carbon::parse($entrada->fecha_entrada);						
@@ -60,15 +57,27 @@
 							</td>	
 							<td>{{ $entrada->cliente->nombre }}</td>						
 							<td>{{ $entrada->usuario }}</td>
-							<td>{{ $entrada->producto->nombre }}</td>
-							<td>{{ $entrada->modelo }}</td>
+							<td>{{ $entrada->producto->nombre }}</td>							
 							<td>{{ $entrada->tecnico->nombre }}</td>
 							<td>{{ $entrada->averia }}</td>							
 							<td>{{ $entrada->comentario }}</td>
-							<td class="text-center">
-								 <a href="{{ route('entrada-reparada.create', $entrada->id) }}" title="Reparar entrada" class="btn btn-success">
-								 	<i class="fa fa-check"></i>									
-								 </a>	
+							<td>{{ $entrada->solucion }}</td>
+							<td class="text-center">{{ $entrada->horas }}</td>
+							<td class="text-center">								 
+								<div class="btn-group">
+								  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Entrada entregada">
+								    <i class="fa fa-check"></i></button>
+								  <ul class="dropdown-menu">
+								    <li><a href="#" class="entregada" data-id="{{$entrada->id}}" data-desde="0">Hoy</a></li>
+								    <li><a href="#" class="entregada" data-id="{{$entrada->id}}" data-desde="1">Ayer</a></li>
+								    <li><a href="#" class="entregada" data-id="{{$entrada->id}}" data-desde="2">Hace 2 días</a></li>	
+								    <li><a href="#" class="entregada" data-id="{{$entrada->id}}" data-desde="3">Hace 3 días</a></li>
+								    <li><a href="#" class="entregada" data-id="{{$entrada->id}}" data-desde="4">Hace 4 días</a></li>
+								    <li><a href="#" class="entregada" data-id="{{$entrada->id}}" data-desde="5">Hace 5 días</a></li>
+								    <li><a href="#" class="entregada" data-id="{{$entrada->id}}" data-desde="6">Hace 6 días</a></li>
+								    <li><a href="#" class="entregada" data-id="{{$entrada->id}}" data-desde="7">Hace 1 semana</a></li>
+								  </ul>
+								</div>								 
 								 <button type="button" class="btn btn-danger btn-delete" data-id="{{$entrada->id}}" title="Borrar entrada">
 								 	<i class="fa fa-remove"></i>									
 								 </button>
@@ -80,12 +89,35 @@
 		</div>
 	</div>
 	@else
-		Enhorabuena!!. No hay entradas pendientes de reparar.
+		No hay entradas reparadas.
 	@endentradas
 
 	@section('scripts')
 	@parent    	
 		<script>
+			$(document).on('click', '.entregada', function() {				
+ 				entrada_id = $(this).attr('data-id'); 
+ 				desde = $(this).attr('data-desde'); 
+
+				$.ajax({
+					type: 'post',
+				    url : 'http://localhost/taller/public/entrada-entregada',
+				    data: {
+						'_token': $('input[name=_token]').val(),
+			            'id'    : entrada_id,
+			            'desde' : desde
+				    },
+				    success: function (resultado) {						            		
+				    	$(".entrada" + entrada_id).hide();
+				        toastr.success(resultado.mensaje, resultado.titulo);
+				    },
+				    error: function (resultado) {
+				    	console.log('Error:', resultado);
+						toastr.error(resultado.mensaje, resultado.titulo);
+				    }
+				});  				
+ 			});
+
 			$(document).on('click', '.btn-delete', function() {				
  				entrada_id = $(this).attr('data-id'); 
 
@@ -132,8 +164,7 @@
 				"language"  : { "url": "{{ asset('/json/spanish.json')}}" },
 				"columnDefs": [
 				    { "width": "10px",  "targets": 0 },
-				    { "width": "100px", "targets": 1 },
-				    { "width": "60px",  "targets": 2 }
+				    { "width": "80px", "targets": 1 }				    
 				  ]
 		  	});		  
 		</script>

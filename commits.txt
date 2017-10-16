@@ -1,6 +1,9 @@
+Commit7
+-  Se completa la eliminación de las entradas reparadas
+-  Se completa la edición de las entradas reparadas
+-  Se completa el marcado de entradas reparadas
 
 Commit6
-
 - Se crean las directivas @productos, @clientes y @tecnicos
 - Se crean las directivas @hoy, @ayer y @hacevariosdias
 - Se termina la actualización de entradas pendientes
@@ -10,15 +13,12 @@ los días transcurridos desde su registro en el ssitema
 - Se completa el registro de soluciones de las entradas
 
 Commit5
-
 - Las inserciones y actualizaciones de cliente, productos y tecnicos se proteger con try catch
 - Se integra el plugin datatables para mostrar los registros de clientes, productos y técnicos
 - Se integra 2 tipos de mensajes con el objetivo de indicar al cliente cuál ha sido el resultado
 de registros y/o actualizaciones de clientes, técnicos y productos
 
-
 Commit4
-
 - Se crea app.css con unos estilos propios
 - Se añade la fuente Raleway
 - Se crean las interfaces ClienteRepositoryInterface.php y TecnicoRepositoryInterface.php
@@ -30,15 +30,12 @@ Commit4
 - Se añaden iconos font-awesome a las vistas de productos, clientes y productos
 - Se añade mensaje de éxito y fracaso al registrar nuevos productos, clientes y técnicos
 
-
 Commit3
-
  - Se crea el request TecnicoRequest
  - Se crea el request ClienteRequest
  - Se termina la sección de los productos
 
 Commit2
-
  - Se inicia la implementación del patrón repositorio
  - Se crea la interfaz ProductoRepositoryInterface
  - Se crea el repositorio de productos implementando la interfaz mencionada anteriormente
@@ -47,7 +44,6 @@ Commit2
  - Se crean los controladores de clientes, productos y técnicos
 
 Commit1
-
 - Se instala Laravel 5.5
 - Se eliminan las migraciones de los usuarios que vienen por defecto
 - Se crea el modelo de la aplicación que consiste en Tecnicos, Clientes, Productos y Entradas

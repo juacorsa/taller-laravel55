@@ -31,7 +31,7 @@
                         <a href="{{ route('entradas-pendientes.index') }}"><i class="fa fa-bell"></i> Entradas Pendientes</a>
                     </li>
                     <li>
-                        <a href="{{ url('pedidos_preparados') }}"><i class="fa fa-thumbs-up"></i> Entradas Preparadas</a>
+                        <a href="{{ route('entradas-reparadas.index') }}"><i class="fa fa-thumbs-up"></i> Entradas Reparadas</a>
                     </li>                    
                     <li>
                         <a href="{{ url('pedidos_entregados') }}"><i class="fa fa-check"></i> Entradas Entregadas</a>

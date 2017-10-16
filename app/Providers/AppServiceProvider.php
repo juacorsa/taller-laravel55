@@ -31,27 +31,27 @@ class AppServiceProvider extends ServiceProvider
             return $entradas->count() > 0;
         });     
 
-        Blade::if('hoy', function($entrada) {
+        Blade::if('hoy', function($fecha) {
             $hoy = Carbon::today();
             $dia_carbon = $hoy->day;
             $mes_carbon = $hoy->month;
             $año_carbon = $hoy->year;            
-            list($año_entrada, $mes_entrada, $dia_entrada) = explode('-', $entrada->fecha_entrada);            
+            list($año_entrada, $mes_entrada, $dia_entrada) = explode('-', $fecha);            
             return ($dia_carbon == $dia_entrada && $mes_carbon == $mes_entrada && $año_carbon == $año_entrada);
         });     
 
-        Blade::if('ayer', function($entrada) {
+        Blade::if('ayer', function($fecha) {
             $hoy = Carbon::yesterday();
             $dia_carbon = $hoy->day;
             $mes_carbon = $hoy->month;
             $año_carbon = $hoy->year;            
-            list($año_entrada, $mes_entrada, $dia_entrada) = explode('-', $entrada->fecha_entrada);            
+            list($año_entrada, $mes_entrada, $dia_entrada) = explode('-', $fecha);            
             return ($dia_carbon == $dia_entrada && $mes_carbon == $mes_entrada && $año_carbon == $año_entrada);
         });     
 
-        Blade::if('hacevariosdias', function($entrada) {
+        Blade::if('hacevariosdias', function($fecha) {
             $hoy = Carbon::today();
-            list($año_entrada, $mes_entrada, $dia_entrada) = explode('-', $entrada->fecha_entrada);                        
+            list($año_entrada, $mes_entrada, $dia_entrada) = explode('-', $fecha);                        
             $fecha_entrada = Carbon::create($año_entrada, $mes_entrada, $dia_entrada, 0,0,0);            
             return $hoy->diffInDays($fecha_entrada) > 2;
         });     

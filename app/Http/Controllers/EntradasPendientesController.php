@@ -104,9 +104,20 @@ class EntradasPendientesController extends Controller
 
     public function destroy(Request $request)  
     {
-        $this->entrada->borrar($request->id);
-        return response()->json([
-            'result' => 'success'            
-        ]);
+        try 
+        {
+            $this->entrada->borrar($request->id);
+            return response()->json([
+                'mensaje' => ENTRADA_ENTREGADA,
+                'titulo'  => ENHORABUENA
+            ]);
+        }
+        catch(Exception $e)
+        {
+            return response()->json([
+                'mensaje' => ENTRADA_NO_ENTREGADA,
+                'titulo'  => ERROR
+            ]);
+        }
     }
 }
