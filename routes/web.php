@@ -69,5 +69,8 @@ Route::post('/borrar-entrada', 'EntradasPendientesController@destroy');
 Route::get('/entradas-reparadas', 'EntradasReparadasController@index')->name('entradas-reparadas.index');
 Route::post('/entrada-entregada', 'EntradasReparadasController@entregada');
 Route::get('/entrada-reparada/{id}', 'EntradasReparadasController@edit')->name('entrada-reparada.edit');
-
 Route::put('/entrada-reparada', 'EntradasReparadasController@update')->name('entrada-reparada.update');
+Route::get('/entradas-entregadas', 'EntradasEntregadasController@index')->name('entradas-entregadas.index');
+Route::post('/entradas-entregadas', 'EntradasEntregadasController@list')->name('entradas-entregadas.list');
+Route::get('/entrada-entregada/{id}', 'EntradasEntregadasController@show')->name('entrada-entregada.show');
+

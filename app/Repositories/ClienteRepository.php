@@ -21,14 +21,14 @@ class ClienteRepository implements ClienteRepositoryInterface
 		return $this->modelo->orderBy('nombre','asc')->get();
 	}
 
-	public function registrar(array $data)
+	public function registrar(array $datos)
 	{
-        return $this->modelo->create($data);
+        return $this->modelo->create($datos);
 	}
 
-	public function actualizar(array $data)
+	public function actualizar(array $datos)
 	{		
-		return $this->modelo->find($data['id'])->update($data);
+		return $this->modelo->find($datos['id'])->update($datos);
 	}
 
 	public function obtener($id)

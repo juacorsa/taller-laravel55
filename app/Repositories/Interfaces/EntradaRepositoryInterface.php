@@ -12,13 +12,13 @@ interface EntradaRepositoryInterface
 
 	public function obtenerEntradasEntregadas($año);	
 
-	public function registrar(array $data);
+	public function registrar(array $datos);
 	
-	public function actualizar(array $data);
+	public function actualizar(array $datos);
 
 	public function obtener($id);
 
-	public function reparar(array $data);
+	public function reparar(array $datos);
 
 	public function entregar($id, $desde);
 

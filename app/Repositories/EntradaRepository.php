@@ -16,17 +16,7 @@ class EntradaRepository implements EntradaRepositoryInterface
 	{
 		$this->modelo = $modelo;
 	}
-
-	private function obtenerEntradas($estado)
-	{
-		return $this->modelo::with('cliente')
-			->with('producto')
-			->with('tecnico')
-			->where('estado', $estado)
-			->orderBy('fecha_entrada','desc')
-			->get();		
-	}
-
+	
 	public function obtenerEntradasPendientes()
 	{
 		return $this->modelo::with('cliente')
@@ -39,7 +29,13 @@ class EntradaRepository implements EntradaRepositoryInterface
 
 	public function obtenerEntradasEntregadas($año)
 	{
-		
+		return $this->modelo::with('cliente')
+			->with('producto')
+			->with('tecnico')
+			->where('estado', ENTREGADA)
+			->whereYear('fecha_entrega', $año)
+			->orderBy('fecha_entrega','desc')
+			->get();					
 	}
 
 	public function obtenerEntradasReparadas()
@@ -80,21 +76,7 @@ class EntradaRepository implements EntradaRepositoryInterface
 	public function entregar($id, $desde)
 	{
 		$data['estado']	= ENTREGADA;
-
-		switch ($desde) {
-			case 0:
-				$data['fecha_entrega'] = now(); 				
-				break;
-
-			case 1:
-				$data['fecha_entrega'] = Carbon::yesterday();				
-				break;
-		
-			default:
-				$data['fecha_entrega'] = Carbon::now()->subDay($desde);
-				break;
-		}
-		
+		$data['fecha_entrega'] = Carbon::now()->subDay($desde);		
 		return $this->modelo->find($id)->update($data);		
 	}	
 

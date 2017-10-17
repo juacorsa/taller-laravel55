@@ -34,7 +34,7 @@
                         <a href="{{ route('entradas-reparadas.index') }}"><i class="fa fa-thumbs-up"></i> Entradas Reparadas</a>
                     </li>                    
                     <li>
-                        <a href="{{ url('pedidos_entregados') }}"><i class="fa fa-check"></i> Entradas Entregadas</a>
+                        <a href="{{ route('entradas-entregadas.index') }}"><i class="fa fa-check"></i> Entradas Entregadas</a>
                     </li>
                     <li>
                         <a href="{{ route('clientes.index') }}"><i class="fa fa-users"></i> Clientes</a>

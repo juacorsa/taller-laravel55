@@ -3,14 +3,11 @@
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+{    
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->call(TecnicosSeeder::class);
+        $this->call(ProductosSeeder::class);
+        $this->call(ClientesSeeder::class);
     }
 }

@@ -1,3 +1,8 @@
+Commit8
+- Se completa el listado de entradas entregadas
+- Se completa el detalle de entrada reparada seleccionada
+
+
 Commit7
 -  Se completa la eliminación de las entradas reparadas
 -  Se completa la edición de las entradas reparadas
